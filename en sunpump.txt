@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunPump - Meme Token Creator & MEV Sniper Bot | TRON Ecosystem</title>
+    <meta name="description" content="SunPump - Create meme tokens, add liquidity, and snipe MEV opportunities on TRON. Backed by Justin Sun. The ultimate toolkit for crypto degens.">
+    <meta name="keywords" content="SunPump, meme token, token creator, MEV sniper, TRON, Justin Sun, liquidity, crypto, blockchain, sniper bot">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --gradient-light: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo i {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-light);
+        }
+        
+        .x39ws6qah xccd6jegjbi x39ws6qah {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+        
+        .x39ws6qah xccd6jegjbi x39ws6qah:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(217, 119, 6, 0.15), transparent 50%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+        }
+        
+        .endorsement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-light);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        .features-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .xccd6jegjbi {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .xccd6jegjbi:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-secondary:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+        
+        .meme-visual {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            position: relative;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .token-creator {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .creator-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .creator-input {
+            margin-bottom: 15px;
+        }
+        
+        .creator-input label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .creator-input input {
+            width: 100%;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        
+        .creator-input input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+        
+        /* MEV Sniper Section */
+        .mev-sniper {
+            padding: 100px 0;
+            background-color: var(--primary);
+        }
+        
+        .mev-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .mev-text {
+            flex: 1;
+        }
+        
+        .mev-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sniper-dashboard {
+            width: 100%;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+        
+        .sniper-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sniper-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Token Creation Section */
+        .token-creation {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .creation-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .creation-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .step h3 {
+            margin-bottom: 10px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        /* Justin Sun Section */
+        .justin-sun {
+            padding: 100px 0;
+            background-color: var(--primary);
+            text-align: center;
+        }
+        
+        .justin-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .justin-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: var(--text);
+            position: relative;
+            padding: 0 40px;
+        }
+        
+        .justin-quote::before, .justin-quote::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            top: -20px;
+        }
+        
+        .justin-quote::before {
+            left: 0;
+        }
+        
+        .justin-quote::after {
+            right: 0;
+        }
+        
+        .justin-signature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .justin-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+        
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.5);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .creation-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .creation-steps::before {
+                display: none;
+            }
+            
+            .mev-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>SunPump</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Create Token</a></li>
+                        <li><a href="#mev">MEV Sniper</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <button class="x39ws6qah xccd6jegjbi x39ws6qah" id="connectWallet">
+                    <i class="fas fa-wallet"></i> Connect Wallet
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="endorsement-badge">
+                        <i class="fas fa-check-circle"></i> Backed by Justin Sun
+                    </div>
+                    <div class="features-badge">
+                        <i class="fas fa-bolt"></i> CREATE, PUMP & SNIPE
+                    </div>
+                    <h1>The Ultimate Meme Token Toolkit</h1>
+                    <p>SunPump - Create meme tokens in seconds, add liquidity, and snipe MEV opportunities on TRON. The all-in-one platform for crypto degens.</p>
+                    <div class="cta-buttons">
+                        <button class="xccd6jegjbi">Create Token</button>
+                        <button class="xccd6jegjbi">Launch Sniper</button>
+                        <button class="cta-secondary">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="meme-visual">
+                        <div class="token-creator">
+                            <div class="creator-header">
+                                <h3>Create Meme Token</h3>
+                                <span class="badge">TRC-20</span>
+                            </div>
+                            <div class="creator-input">
+                                <label for="tokenName">Token Name</label>
+                                <input type="text" id="tokenName" placeholder="e.g. DogeSun">
+                            </div>
+                            <div class="creator-input">
+                                <label for="tokenSymbol">Token Symbol</label>
+                                <input type="text" id="tokenSymbol" placeholder="e.g. DOGES">
+                            </div>
+                            <div class="creator-input">
+                                <label for="tokenSupply">Total Supply</label>
+                                <input type="text" id="tokenSupply" placeholder="e.g. 1000000">
+                            </div>
+                            <button class="xccd6jegjbi" style="width: 100%; margin-top: 10px;">Deploy Token</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful DeFi Tools</h2>
+                <p>Everything you need to launch and manage meme tokens on TRON</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>One-Click Token Creation</h3>
+                    <p>Deploy TRC-20 tokens in seconds with no coding required. Customize name, symbol, supply, and taxes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Liquidity Automation</h3>
+                    <p>Automatically add liquidity to SunSwap with customizable lock periods and initial pricing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h3>MEV Sniper Bot</h3>
+                    <p>Front-run new token launches and liquidity additions with our advanced MEV sniper bot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEV Sniper Section -->
+    <section class="mev-sniper" id="mev">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced MEV Sniper</h2>
+                <p>Maximize your profits with our cutting-edge MEV extraction tools</p>
+            </div>
+            <div class="mev-content">
+                <div class="mev-text">
+                    <h3>Front-Run The Market</h3>
+                    <p>Our MEV sniper bot monitors the TRON mempool for new token launches and liquidity additions, allowing you to get in before everyone else.</p>
+                    
+                    <div style="margin: 30px 0;">
+                        <h4 style="margin-bottom: 15px;">Key Features:</h4>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-check" style="color: var(--success);"></i>
+                                <span>Real-time mempool monitoring</span>
+                            </li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-check" style="color: var(--success);"></i>
+                                <span>Customizable buy/sell triggers</span>
+                            </li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-check" style="color: var(--success);"></i>
+                                <span>Gas optimization for maximum profit</span>
+                            </li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-check" style="color: var(--success);"></i>
+                                <span>Rug-pull detection system</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button class="xccd6jegjbi">Launch Sniper Bot</button>
+                </div>
+                <div class="mev-visual">
+                    <div class="sniper-dashboard">
+                        <div class="sniper-header">
+                            <h3>MEV Sniper Dashboard</h3>
+                            <span class="status online">● ACTIVE</span>
+                        </div>
+                        <div class="sniper-stats">
+                            <div class="stat-box">
+                                <div class="stat-value">24</div>
+                                <div class="stat-label">Snipes Today</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">+5.2%</div>
+                                <div class="stat-label">Avg. Profit</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">0.03s</div>
+                                <div class="stat-label">Avg. Response</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                        </div>
+                        <div class="creator-input">
+                            <label for="sniperAmount">Buy Amount (TRX)</label>
+                            <input type="text" id="sniperAmount" placeholder="1000">
+                        </div>
+                        <div class="creator-input">
+                            <label for="slippage">Slippage Tolerance (%)</label>
+                            <input type="text" id="slippage" placeholder="15">
+                        </div>
+                        <button class="xccd6jegjbi" style="width: 100%; margin-top: 10px;">Start Sniper</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Token Creation Section -->
+    <section class="token-creation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Create Token in 3 Steps</h2>
+                <p>Launch your meme token on TRON in minutes</p>
+            </div>
+            <div class="creation-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Configure Token</h3>
+                    <p>Set name, symbol, supply, and tokenomics for your meme token</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add Liquidity</h3>
+                    <p>Fund the initial liquidity pool on SunSwap with TRX or other tokens</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Launch & Promote</h3>
+                    <p>Deploy your token and start marketing to build community</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="xccd6jegjbi">Start Creating</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Justin Sun Section -->
+    <section class="justin-sun">
+        <div class="container">
+            <div class="justin-content">
+                <div class="justin-quote">
+                    SunPump represents the next evolution of decentralized finance on TRON. By empowering creators with easy token deployment and advanced trading tools, we're democratizing access to the meme economy.
+                </div>
+                <div class="justin-signature">
+                    <div class="justin-avatar">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 700;">Justin Sun</div>
+                        <div style="color: var(--text-secondary);">Founder of TRON</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about SunPump</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is SunPump?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>SunPump is an all-in-one platform for creating meme tokens, adding liquidity, and using MEV sniper bots on the TRON blockchain. It's designed to make token creation and advanced trading accessible to everyone.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the MEV Sniper work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our MEV Sniper monitors the TRON mempool for new token launches and liquidity additions. When it detects an opportunity, it automatically executes trades with optimized gas settings to front-run other traders, maximizing your profit potential.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is SunPump safe to use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, SunPump's smart contracts have been audited by leading security firms. As a non-custodial platform, you maintain control of your funds at all times. We also include rug-pull detection features to help identify potentially malicious tokens.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the fees?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Token creation has a fixed fee of 100 TRX. MEV Sniper usage requires a subscription of 500 TRX per month or 5,000 TRX annually. There are no percentage fees on transactions beyond standard network gas costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SunPump</h3>
+                    <p>The ultimate meme token toolkit on TRON. Create, pump, and snipe with ease.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Token Creator</a></li>
+                        <li><a href="#">Liquidity Manager</a></li>
+                        <li><a href="#">MEV Sniper</a></li>
+                        <li><a href="#">Rug-Pull Detector</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 SunPump. All rights reserved. | Backed by Justin Sun</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+    <script>
+        // Connect Wallet Button
+        document.getElementById('connectWallet').addEventListener('click', function() {
+
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Token creation form interaction
+        const tokenNameInput = document.getElementById('tokenName');
+        const tokenSymbolInput = document.getElementById('tokenSymbol');
+        
+        if (tokenNameInput && tokenSymbolInput) {
+            tokenNameInput.addEventListener('input', function() {
+                // Auto-generate symbol based on name
+                if (tokenSymbolInput.value === '') {
+                    const name = this.value;
+                    if (name.length > 0) {
+                        // Create a symbol from the name (first 3-5 chars in uppercase)
+                        const symbol = name.substring(0, 5).toUpperCase();
+                        tokenSymbolInput.value = symbol;
+                    }
+                }
+            });
+        }
+        
+        // MEV Sniper simulation
+        const sniperStatus = document.querySelector('.status');
+        if (sniperStatus) {
+            // Simulate sniper status changes
+            setInterval(() => {
+                if (sniperStatus.classList.contains('online')) {
+                    sniperStatus.textContent = '● SCANNING';
+                } else {
+                    sniperStatus.textContent = '● ACTIVE';
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
